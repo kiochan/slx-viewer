@@ -13,7 +13,7 @@ import {
   NodeChange,
   ReactFlowProvider,
 } from "@xyflow/react";
-import "@xyflow/react/dist/style.css";
+
 import { nodeTypes } from "../constants/settings";
 import { useRouter } from "next/navigation";
 
@@ -59,16 +59,20 @@ export default function FlowCanvas(props: FlowCanvasProps) {
       {/* Header Section */}
       <div
         style={{
+          position: "absolute",
+          zIndex: 999,
+          width: "100vw",
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "center",
           padding: "1rem 2rem",
-          backgroundColor: "#f8f9fa",
-          borderBottom: "2px solid #ddd",
+          backdropFilter: "blur(0.2rem)",
+          border: "1px solid rgba(255,255,255,0.1)",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.3)",
         }}
       >
-        <h2 style={{ fontSize: "1.5rem", color: "#333", fontWeight: 600 }}>
+        <h2 style={{ fontSize: "1.5rem", color: "#eee", fontWeight: 600 }}>
           {props.sid ? `Sub System: ${props.sid}` : "Root System"}
         </h2>
 
@@ -101,8 +105,8 @@ export default function FlowCanvas(props: FlowCanvasProps) {
       <ReactFlowProvider>
         <div
           style={{
-            width: "100%",
-            height: "calc(100% - 60px)",
+            width: "100vw",
+            height: "100vh",
           }}
         >
           <ReactFlow
@@ -114,17 +118,21 @@ export default function FlowCanvas(props: FlowCanvasProps) {
             fitView
             style={{
               borderRadius: "8px",
-              backgroundColor: "#fff",
+              backgroundColor: "#222",
               boxShadow: "0 2px 6px rgba(0, 0, 0, 0.1)",
             }}
           >
             <Background variant={BackgroundVariant.Dots} gap={15} size={1} />
             <MiniMap
               style={{
-                backgroundColor: "#f1f3f5",
-                borderRadius: "6px",
-                boxShadow: "0 2px 6px rgba(0, 0, 0, 0.1)",
+                backdropFilter: "blur(0.2rem)",
+                background: "transparent",
+                border: "1px solid rgba(255,255,255,0.1)",
+                borderRadius: "5px",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.3)",
+                overflow: "hidden",
               }}
+              maskColor="rgb(255, 255, 255, 0.1)"
             />
             <Controls />
           </ReactFlow>

@@ -62,7 +62,7 @@ export default memo(function CustomNode(props: NodeProps) {
         type="target"
         position={Position.Left}
         id={`in-${i + 1}`}
-        style={{ top: `${topPercent}%`, background: "#4CAF50" }} // 绿色
+        style={{ top: `${topPercent}%`, background: "#4a5" }} // 绿色
       />
     );
   });
@@ -76,7 +76,7 @@ export default memo(function CustomNode(props: NodeProps) {
         type="source"
         position={Position.Right}
         id={`out-${i + 1}`}
-        style={{ top: `${topPercent}%`, background: "#2196F3" }} // 蓝色
+        style={{ top: `${topPercent}%`, background: "#09f" }} // 蓝色
       />
     );
   });
@@ -89,9 +89,11 @@ export default memo(function CustomNode(props: NodeProps) {
 
   // **✅ 样式优化**
   const nodeStyle: React.CSSProperties = {
-    background: "#fff",
+    color: "#eee",
     borderRadius: 10,
-    boxShadow: "0 2px 6px rgba(0, 0, 0, 0.2)",
+    backdropFilter: "blur(0.2rem)",
+    background: "transparent",
+    border: "1px solid rgba(255,255,255,0.1)",
     padding: "12px",
     cursor: "move",
     textAlign: "center",
@@ -101,7 +103,7 @@ export default memo(function CustomNode(props: NodeProps) {
   const blockTypeStyle: React.CSSProperties = {
     fontSize: 12,
     fontWeight: "bold",
-    color: "#555",
+    color: "#aaa",
     marginBottom: 4,
     textTransform: "uppercase",
     letterSpacing: "0.5px",
@@ -116,21 +118,23 @@ export default memo(function CustomNode(props: NodeProps) {
 
   const subSystemButtonStyle: React.CSSProperties = {
     position: "absolute",
-    bottom: "-1.5rem",
-    left: "50%",
-    transform: "translateX(-50%)",
-    background: "#FF9800",
-    color: "#fff",
+    bottom: "-0.5rem",
+    right: "50%",
+    transform: "translateY(-50%) translateY(100%)",
+    color: "#eee",
     padding: "6px 12px",
     borderRadius: 6,
     fontSize: 12,
+    zIndex: 9999,
     cursor: "pointer",
-    boxShadow: "0 2px 6px rgba(0, 0, 0, 0.2)",
+    backdropFilter: "blur(0.2rem)",
+    background: "rgba(255, 127,0,0.2)",
+    border: "1px solid rgba(255,255,255,0.1)",
     transition: "background 0.3s",
   };
 
   const subSystemButtonHoverStyle: React.CSSProperties = {
-    background: "#F57C00",
+    background: "#f90",
   };
 
   // **Tooltip 内容**
